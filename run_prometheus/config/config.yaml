@@ -1,0 +1,40 @@
+# Prometheus Configuration File
+
+# Global settings
+global:
+  scrape_interval:     60s
+  evaluation_interval: 60s
+  scrape_timeout:      10s
+
+# Scrape configurations
+scrape_configs:
+
+  # Monitor Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Data collector
+  - job_name: 'data_collector'
+    static_configs:
+      - targets: ['0.0.0.0:8001']
+    metrics_path: '/metrics'
+
+  # Data processor
+  - job_name: 'data_proccesor'
+    static_configs:
+      - targets: ['0.0.0.0:8006']
+    metrics_path: '/metrics'
+
+  # Database
+  - job_name: 'database'
+    static_configs:
+      - targets: ['0.0.0.0:8003']
+    metrics_path: '/metrics'
+
+  # Ngork Endpoint
+  - job_name: 'ngork_endpoint'
+    static_configs:
+      - targets: ['0.0.0.0:8080']
+    metrics_path: '/metrics'
+
