@@ -41,17 +41,7 @@ auth_token = GenerateAuthToken()
 # Auth Endpoint
 async def get_app(token: str = Depends(auth_token.oauth2_scheme)):
     pass 
-    # credentials_exception = HTTPException(
-    #     status_code=status.HTTP_401_UNAUTHORIZED,
-    #     detail="Could not validate credentials",
-    #     headers={"WWW-Authenticate": "Bearer"},
-    # )
-    # try:
-    #     payload = jwt.decode(token, auth_token.SECRET_KEY, algorithms=[auth_token.ALGORITHM])
-    #     pass 
-    # except jwt.PyJWTError as e :
-    #     print(e)
-    #     raise credentials_exception
+  
 
 # Router endpoint to ether database or data proccessor for data collection or id collection
 @router.get("/ngork_endpoint/{wanted_directed_service}")
